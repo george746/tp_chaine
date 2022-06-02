@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
 html{
     font-size: 62.5%;
 }
@@ -7,15 +9,20 @@ body{
     color: #fff;
     max-width: 100%;
 }
+button{
+    background-color: transparent;
+    border: 0;
+}
+
 *{
     box-sizing: border-box;
 }
-img{
-    display: inline-block;
+img {
+    display: block;
     width: 100%;
-    height: 100%;
-    vertical-align: middle;
-    object-fit: cover;
+    height: 20rem ;
+
+    /* object-fit: cover; */
 }
 h1,h2,h3,p,ul{
     margin: 0;
@@ -27,15 +34,31 @@ a{
 }
 h1{
     text-align: center;
+    font-family: 'rush_of_the_geisharegular';
 }
 header h1{
     font-size: 4rem;
     margin-bottom: 2rem;
 }
+*::-webkit-scrollbar {
+    width: .2rem;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: #222;
+    outline: .1rem solid #333;
+}
+:root{
+    --color-default:  #292F33;
+    --color-primary: #55ACEE;
+    --color-secondary: #66757F;
+    --color-block: #CCD6DD;
+    --color-last-bg: #fff;
+}
+
 section{
    /*background: #222(./)no-repeat scroll center center / cover */
-    background-image: url("https://a-static.besthdwallpaper.com/batman-2021-affiche-du-film-fond-d-ecran-2880x1800-54803_8.jpg");
-    background-position: center center;
+   background-image: url("../assete/sport2.jpg");
+   background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     /* max-height: max-content;     */
@@ -56,17 +79,137 @@ section h2, p{
     background-color: rgba(0,0,0,.7);
    
 }
-ul {
-    max-width: 100rem;
+main .grid-picture-large {
+    max-width: 110rem;
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    gap: 2rem ;
+    gap: 0rem ;
     margin: 0 auto;
     border: #fff solid 0rem 0.1rem 0.1rem 0.1rem; 
-    padding: 2rem;
+    padding: 0rem;
     box-shadow: 0 0 1.0rem #fff ;
     margin-top: 2rem;
     
+}
+
+ul figure{
+    position: relative;
+}
+ul figure .material-icons{
+    vertical-align: -.4rem;
+}
+ul figure figcaption{
+    display: grid;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.6);
+    align-items: center;
+    transform: scale(0);
+    transition: all 500ms ease-in-out;
+    transform-origin: center center;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+}
+ul figure:hover figcaption{
+    transform: scale(1);
+}
+.parent-modale{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.4s ease-in-out;
+    padding: 1rem;
+}
+.parent-modale .modale{
+    max-width: 40rem;
+    height: 30rem;
+    position: fixed;
+    top: 27%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0 0 .1rem rgba(0,0,0,0.6);
+    z-index: 2;
+    cursor: pointer;
+    margin: auto;
+    
+}
+#bt{
+    background-color: #222;
+    position: relative;
+    top: 90%;
+    display: block;
+    margin: auto;
+    padding: 1rem;
+    border-radius: 0 1rem;
+    color: #fff;
+    text-align: center;
+
+}
+.parent-modale img{
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+}
+.parent-modale .modale .desc{
+    position: static;
+    transition: none;
+    background-color: #fff;
+    color: #222;
+    padding: 1rem;
+    
+}
+.modale-active{
+    z-index: 1;
+    opacity: 1;
+    transform-origin: center center;
+    margin-bottom: 3rem;
+}
+.parent-modale .modale .desc h3{
+    font-size: x-large;
+    font-weight: 100%;
+    background-color: #222;
+    color: #fff;
+    padding: 1rem;
+}
+.parent-modale .modale .desc p :is(time){
+    padding-bottom: 1rem;
+}
+time{
+    font-size: 2rem;
+    padding-bottom: 2rem;
+    vertical-align: ;
+    display: block;
+}
+.warning, .success{
+    margin-top: 1rem;
+}
+.warning{
+    background-color: red;
+    color: #fff;
+}
+.success{
+    background-color: green;
+    color: #fff;
+}
+.parent-modale .modale button{
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    z-index: 2;
+    color: #333;
+    cursor: pointer;
 }
 footer{
     margin-top: 5rem ;
@@ -74,33 +217,63 @@ footer{
 footer, p{
     padding: 2rem;
 }
-@media screen and (max-width: 30rem){
+@media screen and (max-width: 40rem){
     
-    header h1{
+     header h1{
         width: 37rem;
-        font-size: 1.5rem;
+        font-size: 2.5rem;
         text-align: center;
+        margin: auto;
         
     }
-    ul {
+    section{
+        width: 100%;
+        margin: auto;
+        margin-top: 1rem;
+    }
+    main .grid-picture-large {
         max-width: 45rem;
         display: grid;
-        grid-template-columns: repeat(3,1fr);
-        gap: 1rem ;
+        grid-template-columns: repeat(2,1fr);
+        gap: 0rem ;
         margin: auto;
         
     }
     ul li img:hover{
         transform: scale(1.1);
     }
+   
     img{
         display: block;
+    }
+    .parent-modale img{
+        width: 30rem;
+        height: 100%;
+        margin: auto;
+    }
+    .parent-modale .modale{
+        max-width: 30rem;
+        height: 35rem;
+        position: fixed;
+        top: 30%;
+        left: 50%;
+        transform: translate( -50%, -50%);
+        background-color: #fff;
+        box-shadow: 0 0 .1rem rgba(0,0,0,0.6);
+        z-index: 2;
+        cursor: pointer;
+        
     }
     
     section{
         max-width: 45rem;
     }
-    
+    ul figure{
+        position: relative;
+    }
+    ul figure .material-icons{
+        vertical-align: -0,1rem;
+    }
     
     footer p{
         font-size: 1.5rem;
